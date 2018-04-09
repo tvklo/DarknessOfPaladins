@@ -1,0 +1,63 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "DarknessOfPaladins"
+host: "test.darknessofpaladins.org"
+basePath: "/api/v1"
+schemes:
+- "http"
+paths:
+  /newGame:
+    post:
+      summary: "Начинает новую игру"
+      description: ""
+      operationId: "newGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Параметры новой игры"
+        required: true
+        schema:
+          $ref: "#/definitions/newGameParams"
+      responses:
+        201:
+          description: "OK"
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: Id персонажа.
+              stats:
+                $ref: "#/definitions/stats"
+                    
+          
+
+definitions:
+  newGameParams:
+    type: "object"
+    required:
+    - "professionId"
+    properties:
+      professionId:
+        type: "integer"
+        example: "1"
+  stats:
+    type: "object"
+    properties:
+      str:
+        type: "integer"
+      dex:
+        type: "integer"
+      con:
+        type: "integer"
+      wiz:
+        type: "integer"
+      int:
+        type: "integer"
+      cha:
+        type: "integer"
